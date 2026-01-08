@@ -29,6 +29,18 @@ docker run -d \
     -u root \
     --restart always \
     registry.cn-hangzhou.aliyuncs.com/luzihang/kasm-rpa-desktop
+    
+```
+对界面优化了，调出右下角时钟
+```
+docker run -d \
+    --name kasm-rpa-desktop \
+    --shm-size=512m \
+    -p 443:6901 \
+    -e VNC_PW=123456 \
+    -u root \
+    --restart always \
+    registry.cn-hangzhou.aliyuncs.com/luzihang/kasm-rpa-desktop:v1.0-clock
 ```
 
 ## 2、浏览器访问
@@ -49,6 +61,10 @@ docker run -d \
 ## 3、进入ubuntu桌面，打开终端，执行以下命令
 
 ![img_1.png](imgs/img_1.png)
+
+下面是携带右下角时钟的样式
+
+![img-clock.png](imgs/img-clock.png)
 
 ```
 tmux new -s 1

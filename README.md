@@ -83,6 +83,10 @@ python3 demo/main.py
 - VSCode 1.84.2
 - google-chrome-stable_current_amd64.deb 默认最新版本
 
+# 补充
+如果在大陆有访问外网的需求，可以安装clash_for_windows，其支持此容器Ubuntu系统，并且提供非常好的界面化操作。
+下载地址：https://archive.org/download/clash_for_windows_pkg
+
 # 参考项目
 
 1、https://github.com/gotoeasy/docker-ubuntu-desktop
@@ -95,8 +99,5 @@ python3 demo/main.py
 
 相比于上述项目，本项目对Chrome做了一些配置优化。对于非开发软件，做了精简。
 
-# 微信交流
-
-wechat: lzh526154064
 
 

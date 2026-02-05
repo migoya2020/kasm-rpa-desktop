@@ -5,10 +5,6 @@ ADD ./ /data
 
 WORKDIR /data
 
-# 解压缩 .deb 文件
-RUN gzip -d google-chrome-stable_current_amd64.deb.gz \
-   && gzip -d vscode_1.84.2-1699528352_amd64.deb.gz
-
 RUN apt -y update && mkdir -p /home/kasm-user/Desktop
 
 # Install Chrome from local .deb file

@@ -1,5 +1,4 @@
 FROM kasmweb/ubuntu-jammy-dind-rootless:1.18.0
-USER root
 
 ADD ./ /data
 

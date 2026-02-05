@@ -29,10 +29,19 @@ RUN mkdir -p /etc/apt/keyrings \
 #     && rm -f code_1.84.2-1699528352_amd64.deb
 
 # Install system dependencies and Python packages
-RUN apt-get install -y sudo python3 python3-pip python3-tk python3-dev telnet vim git tmux cron curl gnome-screenshot unzip \
-    && pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
+ 
+# Python 3.12 and pip (already available on Ubuntu 24.04 base)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.12 python3.12-venv python3-pip curl \
+&& pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
     && apt autoremove -y \
-    && apt clean
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv package manager
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:$PATH"
+
 
 # 创建chrome策略文件目录
 RUN mkdir -p /etc/opt/chrome/policies/managed/

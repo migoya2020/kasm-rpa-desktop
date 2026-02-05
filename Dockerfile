@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/luzihang/kasm-rpa-desktop
+FROM registry.cn-hangzhou.aliyuncs.com/luzihang/kasm-rpa-desktop:v1.0-clock
 USER root
 
 ADD ./ /data

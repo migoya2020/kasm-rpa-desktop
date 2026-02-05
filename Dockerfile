@@ -7,6 +7,11 @@ WORKDIR /data
 
 RUN apt -y update && mkdir -p /home/kasm-user/Desktop
 
+# Tools needed to fetch Chrome key/repo
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget gnupg ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
 # Google Chrome
 RUN mkdir -p /etc/apt/keyrings \
  && wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/keyrings/google-linux-signing-keyring.gpg \

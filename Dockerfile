@@ -8,7 +8,7 @@ WORKDIR /data
 RUN apt -y update && mkdir -p /home/kasm-user/Desktop
 
 # Install Chrome from local .deb file
-RUN apt-get install -y -f ./google-chrome-stable_current_amd64.deb \
+RUN dpkg -i ./google-chrome-stable_current_amd64.deb || apt-get install -y -f \
     && sed -e '/chrome/ s/^#*/#/' -i /opt/google/chrome/google-chrome \
     && echo 'exec -a "$0" "$HERE/chrome" "$@" --user-data-dir="$HOME/.config/chrome" --no-sandbox --disable-dev-shm-usage --no-first-run --disable-infobars --no-default-browser-check' >> /opt/google/chrome/google-chrome \
     && rm -f google-chrome-stable_current_amd64.deb

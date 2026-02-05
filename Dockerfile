@@ -29,11 +29,9 @@ RUN mkdir -p /etc/apt/keyrings \
 #     && rm -f code_1.84.2-1699528352_amd64.deb
 
 # Install system dependencies and Python packages
- 
-# Python 3.12 and pip (already available on Ubuntu 24.04 base)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.12 python3.12-venv python3-pip curl \
-&& pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
+    python3 python3-venv python3-pip curl \
+    && pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
     && apt autoremove -y \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*

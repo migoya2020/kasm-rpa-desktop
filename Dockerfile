@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/luzihang/kasm-rpa-desktop:v1.0-clock
+FROM kasmweb/ubuntu-jammy-dind-rootless:1.18.0
 USER root
 
 ADD ./ /data

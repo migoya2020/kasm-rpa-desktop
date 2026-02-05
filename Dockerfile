@@ -7,11 +7,14 @@ WORKDIR /data
 
 RUN apt -y update && mkdir -p /home/kasm-user/Desktop
 
-# Install Chrome from local .deb file
-RUN dpkg -i ./google-chrome-stable_current_amd64.deb || apt-get install -y -f \
-    && sed -e '/chrome/ s/^#*/#/' -i /opt/google/chrome/google-chrome \
-    && echo 'exec -a "$0" "$HERE/chrome" "$@" --user-data-dir="$HOME/.config/chrome" --no-sandbox --disable-dev-shm-usage --no-first-run --disable-infobars --no-default-browser-check' >> /opt/google/chrome/google-chrome \
-    && rm -f google-chrome-stable_current_amd64.deb
+# Google Chrome
+RUN mkdir -p /etc/apt/keyrings \
+ && wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/keyrings/google-linux-signing-keyring.gpg \
+ && echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-linux-signing-keyring.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends google-chrome-stable \
+ && ln -sf /usr/bin/google-chrome /usr/bin/chrome \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install VS Code from local .deb file
 RUN dpkg -i code_1.84.2-1699528352_amd64.deb \

@@ -21,12 +21,12 @@ RUN mkdir -p /etc/apt/keyrings \
  && ln -sf /usr/bin/google-chrome /usr/bin/chrome \
  && rm -rf /var/lib/apt/lists/*
 
-# Install VS Code from local .deb file
-RUN dpkg -i code_1.84.2-1699528352_amd64.deb \
-    && sed -i 's/Exec=\/usr\/share\/code\/code/Exec=\/usr\/share\/code\/code --no-sandbox/g' /usr/share/applications/code.desktop \
-    && sed -i 's/Icon=com.visualstudio.code/Icon=\/usr\/share\/code\/resources\/app\/resources\/linux\/code.png/g' /usr/share/applications/code.desktop \
-    && ln -s /usr/share/applications/code.desktop /home/kasm-user/Desktop/code.desktop \
-    && rm -f code_1.84.2-1699528352_amd64.deb
+# # Install VS Code from local .deb file
+# RUN dpkg -i code_1.84.2-1699528352_amd64.deb \
+#     && sed -i 's/Exec=\/usr\/share\/code\/code/Exec=\/usr\/share\/code\/code --no-sandbox/g' /usr/share/applications/code.desktop \
+#     && sed -i 's/Icon=com.visualstudio.code/Icon=\/usr\/share\/code\/resources\/app\/resources\/linux\/code.png/g' /usr/share/applications/code.desktop \
+#     && ln -s /usr/share/applications/code.desktop /home/kasm-user/Desktop/code.desktop \
+#     && rm -f code_1.84.2-1699528352_amd64.deb
 
 # Install system dependencies and Python packages
 RUN apt-get install -y sudo python3 python3-pip python3-tk python3-dev telnet vim git tmux cron curl gnome-screenshot unzip \

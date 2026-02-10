@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   kasm-rpa-desktop:
-    image: kasmweb/ubuntu-jammy-dind-rootless:1.18.0
+    image: kasmweb/ubuntu-jammy-desktop:1.18.0
     container_name: kasm-rpa-desktop
     shm_size: 512m
     ports:
